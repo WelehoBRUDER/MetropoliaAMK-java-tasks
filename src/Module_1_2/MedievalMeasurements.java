@@ -4,9 +4,9 @@ import java.util.Scanner;
 public class MedievalMeasurements {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        final float luotiWeight = (float) 13.28;
-        final float naulaWeight =  luotiWeight * 32;
-        final float leiviskaWeight =  naulaWeight * 20;
+        final double luotiWeight = 13.28;
+        final double naulaWeight =  luotiWeight * 32;
+        final double leiviskaWeight =  naulaWeight * 20;
 
         System.out.println("Weight (g): ");
         double grams = scanner.nextDouble();
