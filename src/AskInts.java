@@ -16,7 +16,11 @@ public class AskInts {
 
         System.out.println("The sum of the numbers is " + (first + second + third));
         System.out.println("The product of the numbers is " + (first * second * third));
-        float average = (float) (first + second + third) / 3;
+
+        // The average was different from expected output due to it being an integer
+        // It was then cast to a float, which correctly displayed decimals, but was still not entirely correct
+        // The final modification was to cast the number to a double, allowing it to display longer decimals.
+        double average = (double) (first + second + third) / 3;
         System.out.println("The average of the numbers is " + average);
     }
 }
