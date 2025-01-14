@@ -12,6 +12,7 @@ public class MultiTable {
         System.out.println("You need 10 points to pass this exam.");
 
         int score = 0;
+        int q = 1;
         while (score < numOfQuestions) {
             System.out.println("Begin answering!");
             for (int i = 0; i < numOfQuestions; i++) {
@@ -19,21 +20,25 @@ public class MultiTable {
                 int factorB = (int) Math.ceil(Math.random() * 10);
                 int result = factorA * factorB;
 
-                System.out.println("What is " + factorA + " * " + factorB + "?");
+                System.out.println("(Question " + q + ") What is " + factorA + " * " + factorB + "?");
                 int userResult = scanner.nextInt();
 
                 if (userResult == result) {
                     System.out.println("Your answer is correct!");
                     score++;
+                    if (score >= numOfQuestions) {
+                        break;
+                    }
                 }
 
                 else {
                     System.out.println("Drat! Your answer is incorrect!");
                 }
+                q++;
 
             }
 
-            if (score == numOfQuestions) {
+            if (score >= numOfQuestions) {
                 System.out.println("Congratulations! You have gathered 10 points and are now a master of the multiplication table!");
             }
         }
