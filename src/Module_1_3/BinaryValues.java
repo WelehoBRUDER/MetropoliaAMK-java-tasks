@@ -2,18 +2,21 @@ package Module_1_3;
 import java.util.Scanner;
 
 public class BinaryValues {
-    static int decimal;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int decimal = 0;
 
         System.out.println("Enter a binary number: ");
         String binary = scanner.nextLine();
 
-        for (int i = binary.length() - 1; i >= 0; i--) {
-            // Convert the binary char to an integer (0 or 1)
-            int num = Integer.parseInt(String.valueOf(binary.charAt(i)));
-            // Add the resulting power of two to the decimal value
-            decimal += (int) (Math.pow(2, binary.length() - i - 1) * num);
+        // Loop through the binary string
+        for (int i = 0; i < binary.length(); i++) {
+            // Check if this value should be added
+            if (binary.charAt(i) == '1') {
+                // Add the current power of two to the total number
+                decimal += (int) Math.pow(2, binary.length() - i - 1);
+            }
         }
 
         System.out.println(binary + " in decimal is " + decimal);
