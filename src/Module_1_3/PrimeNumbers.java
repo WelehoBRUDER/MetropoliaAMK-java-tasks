@@ -16,22 +16,21 @@ public class PrimeNumbers {
         }
 
         // Loop through all the integers between start and end
-        for (int i = start; i <= end; i++) {
-            // Initialize isPrime boolean and halfOfCheck int
-            boolean isPrime = true;
+        prime: for (int i = start; i <= end; i++) {
+            // Filter out numbers that are divisible by 2 and greater than 2
+            if (i % 2 == 0 && i > 2) {
+                continue;
+            }
             int halfOfCheck = (int) (i / 2 + 1);
             // Check if current number is prime by finding divisions by 2s
             // The loop breaks upon the first even division found
-            for (int j = 2; j <= halfOfCheck; j++) {
+            for (int j = 2; j < halfOfCheck; j++) {
                 if (i % j == 0) {
-                    isPrime = false;
-                    break;
+                    continue prime;
                 }
             }
             // If the current number held up to scrutiny, it is displayed as a prime
-            if (isPrime) {
-                System.out.println(i);
-            }
+            System.out.println(i);
         }
     }
 }
