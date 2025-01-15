@@ -38,17 +38,12 @@ public class Event implements Comparable<Event> {
     }
 
     public static void main(String[] args) {
-        Event e1 = new Event(3, 5);
-        Event e2 = new Event(1, 9);
-        Event e3 = new Event(5, 1);
         PriorityQueue<Event> pq = new PriorityQueue<Event>();
-        pq.add(e1);
-        pq.add(e2);
-        pq.add(e3);
+        pq.add(new Event(3, 5));
+        pq.add(new Event(1, 9));
+        pq.add(new Event(5, 1));
+        pq.add(new Event(7, 6));
         pq.poll();
-        for (Event e : pq) {
-            System.out.println(e.getEndTime());
-        }
     }
 }
 
