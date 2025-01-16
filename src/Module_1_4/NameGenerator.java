@@ -15,10 +15,15 @@ public class NameGenerator {
     public static void main(String[] args) {
         NameGenerator nameGen = new NameGenerator();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("How many names would you like to generate?");
-        int n = scanner.nextInt();
-        for (int i = 0; i < n; i++) {
-            System.out.println(nameGen.generateName());
+        System.out.print("How many names would you like to generate?: ");
+        try {
+            int n = Integer.parseInt(scanner.nextLine());
+            for (int i = 0; i < n; i++) {
+                System.out.println(nameGen.generateName());
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Given input is not a number/integer");
         }
     }
 }
