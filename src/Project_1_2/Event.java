@@ -1,13 +1,7 @@
 package Project_1_2;
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Event implements Comparable<Event> {
-    // TASK 3 - ENUM
-    public enum EventType {
-        ARRIVAL, EXIT
-    }
-
     private int startTime;
     private int endTime;
     private int duration;
@@ -45,7 +39,7 @@ public class Event implements Comparable<Event> {
         this.setDuration(duration);
         this.setStartTime(startTime);
         // TASK 3 - ENUM
-        this.type = EventType.ARRIVAL;
+        this.type = Math.random() > 0.6 ? EventType.EXIT : EventType.ARRIVAL;
     }
 
     public int compareTo(Event e) {
@@ -64,6 +58,7 @@ public class Event implements Comparable<Event> {
         // Iterate through the copy using .poll()
         while (!eventListCopy.isEmpty()) {
             Event event = eventListCopy.poll();
+            // Partly TASK 3
             System.out.println("End time: " + event.getEndTime() + " Type: " + event.getType());
         }
     }
