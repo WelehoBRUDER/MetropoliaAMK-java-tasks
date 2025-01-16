@@ -58,13 +58,14 @@ public class Event implements Comparable<Event> {
         eventList.add(new Event(1, 9));
         eventList.add(new Event(5, 1));
         eventList.add(new Event(7, 6));
-        Event e = eventList.poll();
-        while (!eventList.isEmpty()) {
-            Event event = eventList.poll();
+        eventList.poll();
+        // Make copy of eventList to iterate through without altering the original list
+        PriorityQueue<Event> eventListCopy = new PriorityQueue<>(eventList);
+        // Iterate through the copy using .poll()
+        while (!eventListCopy.isEmpty()) {
+            Event event = eventListCopy.poll();
             System.out.println("End time: " + event.getEndTime() + " Type: " + event.getType());
         }
-        //System.out.println(e.getType());
-        //System.out.println(Arrays.toString(eventList.toArray()));
     }
 }
 

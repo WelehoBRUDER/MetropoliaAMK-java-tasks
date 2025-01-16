@@ -1,0 +1,11 @@
+Simulation can be better than real world experiments,
+because on a broad scale it is far more cost-efficient in terms of resources.
+Simulations can be run on a large scale in a very small amount of time, using only electricity.
+For example; in a real world situation, gathering enough data for analysis takes time and resources.
+It is also affected by real world conditions that may hinder the data gathering process.
+Simulations in contrast are not affected by conditions outside and allow for larger amounts of data
+to be generated in a fraction of the time. The downside of simulation is that while the resources needed for it
+may be fewer in cost than real world data gathering, the pollution indirectly caused by
+data centers consuming large amounts of energy happens to be quite damaging to the environment.
+This can be mitigated by programming the simulation as efficiently as possible (eg .using a language lower level language)
+and organizing it in such a way to use fewer servers.

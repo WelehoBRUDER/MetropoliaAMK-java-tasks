@@ -1,0 +1,10 @@
+A supermarket gets many kinds of customers at random intervals.
+These customers might all want different things. Logistics networks are needeed
+to get supplies to the store where they can be sold. Cashiers serve customers
+as fast as they can, but time spent at the counter is dependent on the customer's order size.
+Self-checkouts can potentially serve customers faster, but they are reliant on the customer.
+
+There needs to be a queue to the checkouts, where customers decide if they want
+service from a cashier or to serve themselves with the self-checkout.
+Cashiers can serve only one customer at a time, and the service time varies wildly.
+Self-checkouts can also serve only one customer, and the service time varies wildly.
