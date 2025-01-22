@@ -1,4 +1,4 @@
-package Module_2_1;
+package Module_2_1.Task_1;
 
 public class TelevisionViewer {
     public static class Television {
