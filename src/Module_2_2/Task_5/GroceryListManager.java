@@ -1,6 +1,6 @@
 package Module_2_2.Task_5;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class GroceryListManager {
     public final class Item {
@@ -23,7 +23,7 @@ public class GroceryListManager {
         }
 
         public double getTotalCost() {
-            return cost * quantity;
+            return Math.max(cost * quantity, 0);
         }
 
         public int getQuantity() {
@@ -42,12 +42,14 @@ public class GroceryListManager {
             this.category = category;
         }
 
+        // Streamlines displaying this information
         public String getInfo() {
             return " = " + cost + "€ each, amount: " + quantity + " (" + getTotalCost() + "€ total)";
         }
     }
 
-    private HashMap<String, Item> groceryList = new HashMap<String, Item>();
+    // Switched to LinkedHashMap to keep insertion order for consistency
+    private LinkedHashMap<String, Item> groceryList = new LinkedHashMap<String, Item>();
 
 
     public void addItem(String item) {
@@ -78,6 +80,7 @@ public class GroceryListManager {
         if (!checkItem(item)) {
             groceryList.put(item, new Item(category, cost, quantity));
         } else {
+            // Updates everything about the item (except for the key)
             Item itm = groceryList.get(item);
             itm.setQuantity(quantity + itm.getQuantity());
             itm.setCost(cost);
@@ -177,6 +180,14 @@ public class GroceryListManager {
         // Show grains
         System.out.println("All grains:");
         groceryListManager.displayByCategory("grains");
-
+        // Show all available items to further prove bananas was updated
+        System.out.println("Grocery List:");
+        groceryListManager.displayAvailableItems();
+        // Remove eggs
+        System.out.println("Removing 'eggs'...");
+        groceryListManager.removeItem("eggs");
+        System.out.println("List without eggs:");
+        groceryListManager.displayList();
+        System.out.println("Total price: " + groceryListManager.calculateTotalCost() + "€");
     }
 }
