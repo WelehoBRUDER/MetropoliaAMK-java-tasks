@@ -1,4 +1,4 @@
-package Module_2_3.Task_2;
+package Module_2_3.Task_3;
 
 import java.util.ArrayList;
 import Module_2_3.Task_1.Book;
@@ -23,5 +23,9 @@ public class LibraryMain {
         library.returnBook(book);
         System.out.println("Books after return:");
         library.displayBooks();
+
+
+        System.out.println("Book 'House of Leaves' available: " + (library.isBookAvailable("House of Leaves") ? "Yes" : "No"));
+        System.out.println("Book 'Vaahteramäen Eemeli' available: " + (library.isBookAvailable("Vaahteramäen Eemeli") ? "Yes" : "No"));
     }
 }

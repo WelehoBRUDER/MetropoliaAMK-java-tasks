@@ -1,4 +1,4 @@
-package Module_2_3.Task_2;
+package Module_2_3.Task_3;
 
 import java.util.ArrayList;
 import Module_2_3.Task_1.Book;
@@ -49,5 +49,15 @@ public class Library {
             }
         }
         return booksByAuthor;
+    }
+    public boolean isBookAvailable(String title) {
+        boolean isAvailable = false;
+        for (Book book : books) {
+            if (book.getTitle().equals(title)) {
+                isAvailable = true;
+                break;
+            }
+        }
+        return isAvailable;
     }
 }
