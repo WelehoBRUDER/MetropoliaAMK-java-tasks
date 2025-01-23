@@ -1,4 +1,4 @@
-package Module_2_2.Task_1_3;
+package Module_2_2.Task_3;
 
 import java.util.HashMap;
 
@@ -77,15 +77,29 @@ public class GroceryListCategorizer {
         return groceryList.values().stream().map(Item::getCost).reduce(0.0, Double::sum);
     }
 
+    public void displayByCategory(String category) {
+        int count = 1;
+        for (String key : groceryList.keySet()) {
+            String cat = groceryList.get(key).getCategory();
+            if (cat.equals(category)) {
+                double cost = groceryList.get(key).getCost();
+                System.out.println(count + ". " + key + " = " + cost + "€");
+                count++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         GroceryListCategorizer groceryListManager = new GroceryListCategorizer();
-        groceryListManager.addItem("banana", 7);
-        groceryListManager.addItem("eggs", 2);
-        groceryListManager.addItem("apples", 3);
-        groceryListManager.addItem("apples", 4);
-        groceryListManager.addItem("waffles", 3.5);
+        groceryListManager.addItem("banana", 7, "fruit");
+        groceryListManager.addItem("eggs", 2, "dairy");
+        groceryListManager.addItem("apples", 3, "fruit");
+        groceryListManager.addItem("apples", 4, "fruit");
+        groceryListManager.addItem("waffles", 3.5, "grains");
         System.out.println("Grocery List: ");
         groceryListManager.displayList();
+        System.out.println("Showing only fruit: ");
+        groceryListManager.displayByCategory("fruit");
         System.out.println("Total price: " + groceryListManager.calculateTotalCost() + "€");
         System.out.println("Is 'eggs' in the grocery list? " + (groceryListManager.checkItem("eggs") ? "Yes" : "No"));
         System.out.println("Removing 'eggs' from the list...");
