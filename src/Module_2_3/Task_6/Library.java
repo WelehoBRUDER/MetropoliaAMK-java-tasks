@@ -1,13 +1,18 @@
-package Module_2_3.Task_4;
+package Module_2_3.Task_6;
 
 import java.util.ArrayList;
-import Module_2_3.Task_1.Book;
+import Module_2_3.Task_4.Book;
 
 public class Library {
     private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
 
     public void addBook(String title, String author, int year) {
         books.add(new Book(title, author, year));
+    }
+
+    public Book getBook(int index) {
+        return this.books.get(index);
     }
 
     public void displayBooks() {
@@ -24,7 +29,21 @@ public class Library {
 
     }
 
-    public Book borrowBook(String title) {
+    public void addUser(String name, int age) {
+        users.add(new User(name, age));
+    }
+
+    public User getUserByName(String name) {
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public void borrowBook(String title, String user) {
+        User myUser = getUserByName(user);
         Book book = null;
         for (int i = 0; i < books.size(); i++) {
             Book book1 = books.get(i);
@@ -34,11 +53,13 @@ public class Library {
                 break;
             }
         }
-        return book;
+        myUser.addBook(book);
     }
 
-    public void returnBook(Book book) {
+    public void returnBook(Book book, String user) {
         books.add(book);
+        User myUser = getUserByName(user);
+        myUser.removeBook(book);
     }
 
     public ArrayList<Book> getBooksByAuthor(String author) {
@@ -59,5 +80,26 @@ public class Library {
             }
         }
         return isAvailable;
+    }
+
+    public double getAverageBookRating() {
+        double sum = 0;
+        for (Book book : books) {
+            sum += book.getRating();
+        }
+        return sum / books.size();
+    }
+
+    public Book getMostReviewedBook() {
+        Book mostReviewedBook = null;
+        for (Book book : books) {
+            if (mostReviewedBook == null) {
+                mostReviewedBook = book;
+            }
+            if (book.getReviews().size() > mostReviewedBook.getReviews().size()) {
+                mostReviewedBook = book;
+            }
+        }
+        return mostReviewedBook;
     }
 }
