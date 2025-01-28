@@ -1,2 +1,2 @@
 # Singleton
-It can't be created frmo outside the class because its constructor is private.
+It can't be created from outside the class because its constructor is private.
