@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class LibraryMember {
     private String name;
-    private String id;
+    private int id;
     private ArrayList<String> borrowedBooks;
+    private static int totalMembers = 0;
 
-    public LibraryMember(String name, String id) {
+    public LibraryMember(String name) {
         this.name = name;
-        this.id = id;
+        this.id = totalMembers;
         this.borrowedBooks = new ArrayList<>();
+        totalMembers++;
     }
 
     public String getName() {
@@ -21,19 +23,29 @@ public class LibraryMember {
         this.name = name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public ArrayList<String> getBorrowedBooks() {
         return borrowedBooks;
     }
 
+    public boolean hasBook(String bookId) {
+        return borrowedBooks.contains(bookId);
+    }
+
     public void borrowBook(String bookId) {
-        borrowedBooks.add(bookId);
+        if (!hasBook(bookId)) {
+            borrowedBooks.add(bookId);
+        }
+    }
+
+    public boolean returnBook(String bookId) {
+        if (hasBook(bookId)) {
+            borrowedBooks.remove(bookId);
+            return true;
+        }
+        return false;
     }
 }
