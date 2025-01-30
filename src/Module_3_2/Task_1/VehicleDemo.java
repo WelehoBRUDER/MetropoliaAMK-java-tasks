@@ -1,6 +1,6 @@
 package Module_3_2.Task_1;
 
-public class VehicleManager {
+public class VehicleDemo {
     public static void main(String[] args) {
         Car car = new Car("Red", "Petrol");
         Motorcycle motorcycle = new Motorcycle("Black", "Gasoline");
