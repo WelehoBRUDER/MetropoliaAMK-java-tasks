@@ -1,10 +1,11 @@
-package Module_3_3.Task_2.library.model;
+package Module_3_3.Task_3.library.model;
 
 public class Book {
     private String title;
     private String author;
     private String isbn;
     private int available;
+    private boolean reserved = false;
 
     public Book(String title, String author, String isbn, int available) {
         this.title = title;
@@ -13,6 +14,13 @@ public class Book {
         this.available = available;
     }
 
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved;
+    }
+
+    public boolean isReserved() {
+        return reserved;
+    }
 
     public String getTitle() {
         return title;
@@ -47,6 +55,9 @@ public class Book {
     }
 
     public String getInfo() {
+        if (reserved) return '"' + title + '"' + " by " + author + ", (" + available + " in stock, isbn: " + isbn + ")" + " RESERVED";
         return '"' + title + '"' + " by " + author + ", (" + available + " in stock, isbn: " + isbn + ")";
     }
+
+
 }

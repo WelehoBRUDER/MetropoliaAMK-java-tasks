@@ -10,8 +10,12 @@ public class Main {
         lib.addMember("Tarmo");
         lib.addMember("Tim");
 
+        lib.displayBooks();
+
         lib.borrowBook("978-1443434973", 0);
         lib.borrowBook("978-1119056072", 1);
         lib.returnBook("978-1443434973", 0);
+
+        lib.displayBooks();
     }
 }

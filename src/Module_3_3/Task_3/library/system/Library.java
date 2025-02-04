@@ -1,7 +1,7 @@
-package Module_3_3.Task_2.library.system;
+package Module_3_3.Task_3.library.system;
 
-import Module_3_3.Task_2.library.model.Book;
-import Module_3_3.Task_2.library.model.LibraryMember;
+import Module_3_3.Task_3.library.model.Book;
+import Module_3_3.Task_3.library.model.LibraryMember;
 
 import java.util.ArrayList;
 
@@ -34,6 +34,7 @@ public class Library {
         }
         return null;
     }
+
     public void displayBooks() {
         System.out.println("Books in the library: ");
         for (Book book : books) {
@@ -45,9 +46,9 @@ public class Library {
         Book book = getBookById(isbn);
         LibraryMember member = getMemberById(memberId);
         // If book and member are valid and the book is available, it gets borrowed (so long as the member doesn't already have it)
-        if (book != null && member != null && book.getAvailable() > 0 && !member.hasBook(isbn)) {
+        if (book != null && member != null && !book.isReserved() && book.getAvailable() > 0 && !member.hasBook(book)) {
             book.setAvailable(book.getAvailable() - 1);
-            member.borrowBook(isbn);
+            member.borrowBook(book);
             System.out.println(member.getName() + " borrowed book " + book.getTitle());
         }
     }
@@ -57,9 +58,32 @@ public class Library {
         LibraryMember member = getMemberById(memberId);
         // If book and member are valid and the specified member has it, it gets returned
         if (book != null && member != null) {
-            if (member.returnBook(isbn)) {
+            if (member.returnBook(book)) {
                 book.setAvailable(book.getAvailable() + 1);
                 System.out.println(member.getName() + " returned book " + book.getTitle());
+            }
+        }
+    }
+
+    public void reserveBook(String isbn, int memberId) {
+        Book book = getBookById(isbn);
+        LibraryMember member = getMemberById(memberId);
+        // If book and member are valid and the book is not reserved, it gets reserved
+        if (book != null && member != null && !book.isReserved()) {
+            book.setReserved(true);
+            member.reserveBook(book);
+            System.out.println(member.getName() + " reserved book " + book.getTitle());
+        }
+    }
+
+    public void cancelReservation(String isbn, int memberId) {
+        Book book = getBookById(isbn);
+        LibraryMember member = getMemberById(memberId);
+        // If book and member are valid and the specified member has it, the reservation is canceled
+        if (book != null && member != null) {
+            if (member.cancelReservation(book)) {
+                book.setReserved(false);
+                System.out.println(member.getName() + " canceled reservation on book " + book.getTitle());
             }
         }
     }
