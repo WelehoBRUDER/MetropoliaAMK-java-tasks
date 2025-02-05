@@ -1,5 +1,7 @@
 # Calculator
 
+This is a simple calculator that can add up integers.
+
 ### Code
 ```
 package Module_4_1;
@@ -37,8 +39,6 @@ public class Calculator {
 }
 ```
 
-Explain the purpose of the Calculator class and its methods.
-
 ### Output
 ```
 5
@@ -50,7 +50,7 @@ Exception in thread "main" java.lang.IllegalArgumentException: Number must be po
 ```
 
 ### Explanation
-The Calculator class is a simple class that adds numbers together. It has three methods:  
+The Calculator class adds numbers together. It has three methods:  
 - add(int number): Adds the input number to the result. If the input number is negative, it throws an IllegalArgumentException.  
 - reset(): Resets the result to 0.  
 - getResult(): Returns the current result.  
