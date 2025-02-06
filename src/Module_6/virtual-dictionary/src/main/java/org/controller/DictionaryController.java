@@ -24,15 +24,4 @@ public class DictionaryController {
     public String searchForWord(String word) {
         return dictionary.searchForWord(word);
     }
-
-    public static void main(String[] args) {
-        DictionaryController controller = new DictionaryController(new Dictionary());
-        controller.addWord("hello", "used as a greeting or to begin a conversation");
-        controller.addWord("world", "the earth, together with all of its countries and peoples");
-
-        String[] words = controller.getWords();
-        for (String word : words) {
-            System.out.println(word + ": " + controller.getMeaning(word));
-        }
-    }
 }
