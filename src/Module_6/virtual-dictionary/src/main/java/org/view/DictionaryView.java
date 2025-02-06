@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,29 +16,85 @@ import org.model.Dictionary;
 
 
 public class DictionaryView extends Application {
-    public void start(Stage window) {
-        DictionaryController controller = new DictionaryController(new Dictionary());
-        controller.addWord("hello", "used as a greeting or to begin a conversation");
-        controller.addWord("world", "the earth, together with all of its countries and peoples");
-        Label text = new Label("Test");
-        Button button = new Button("Search");
-        TextField input = new TextField();
+    public static final DictionaryController controller = new DictionaryController(new Dictionary());
+    public static TextField input;
+    public static Label text;
 
-        FlowPane mainView = new FlowPane(Orientation.VERTICAL);
-        FlowPane search = new FlowPane();
-        FlowPane result = new FlowPane();
-        search.getChildren().add(input);
-        search.getChildren().add(button);
-        result.getChildren().add(text);
+    public static Button createButton(String text) {
+        Button button = new Button(text);
+        button.getStyleClass().add("dict-button");
+        return button;
+    }
+
+    public static TextField createInput() {
+        TextField input = new TextField();
+        input.getStyleClass().add("dict-input");
+        return input;
+    }
+
+    public static Label createLabel(String text) {
+        Label label = new Label(text);
+        label.getStyleClass().add("dict-label");
+        return label;
+    }
+
+    public static Button createSearchButton() {
+        Button button = createButton("Search");
         button.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 String found = controller.searchForWord(input.getText());
                 text.setText(found);
             }
         });
-        mainView.getChildren().add(search);
-        mainView.getChildren().add(result);
+        return button;
+    }
+
+    public static FlowPane createFlowPane(String styleClass) {
+        FlowPane pane = new FlowPane();
+        pane.getStyleClass().add(styleClass);
+        pane.getStyleClass().add("dict-pane");
+        return pane;
+    }
+
+    public static FlowPane createVerticalFlowPane(String styleClass) {
+        FlowPane pane = new FlowPane(Orientation.VERTICAL);
+        pane.getStyleClass().add(styleClass);
+        pane.getStyleClass().add("dict-pane");
+        return pane;
+    }
+
+    public static void append(FlowPane pane, Node... nodes) {
+        for (Node node : nodes) {
+            System.out.println(node.toString());
+            pane.getChildren().add(node);
+        }
+    }
+
+    public void start(Stage window) {
+        // Add some words to the dictionary
+        controller.addWord("hello", "used as a greeting or to begin a conversation");
+        controller.addWord("world", "the earth, together with all of its countries and peoples");
+        // Create text and input
+        Button button = DictionaryView.createSearchButton();
+        text = DictionaryView.createLabel("");
+        input = DictionaryView.createInput();
+
+        // Create search and result panes
+        FlowPane mainView = DictionaryView.createVerticalFlowPane("main-view");
+        FlowPane search = DictionaryView.createFlowPane("search-pane");
+        FlowPane result = DictionaryView.createFlowPane("result-pane");
+
+        // Append elements to panes
+        search.getChildren().add(input);
+        search.getChildren().add(button);
+        result.getChildren().add(text);
+
+        // Append panes together
+        DictionaryView.append(mainView, search, result);
+
+        // Create the scene and load styles
         Scene view = new Scene(mainView);
+        view.getStylesheets().add(getClass().getResource("/dictionary.css").toExternalForm());
         window.setTitle("Virtual Dictionary");
         window.setScene(view);
         window.show();
