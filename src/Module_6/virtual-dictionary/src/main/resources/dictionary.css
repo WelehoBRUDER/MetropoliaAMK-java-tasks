@@ -4,21 +4,53 @@
 
 .main-view * {
     -fx-text-fill: white;
-    -fx-font: 16px "Serif";
+}
+
+.main-view Label,
+.main-view Text,
+.main-view Button,
+.main-view TextField,
+.main-view TextArea {
+    -fx-font-size: 16px;
+    -fx-font-family: "Verdana";
 }
 
 .dict-button {
-    -fx-padding: 4;
-    -fx-background-color: #141414;
+    -fx-padding: 6px;
+    -fx-background-color: #282828;
+    -fx-font-size: 22px;
+    -fx-border-width: 2px;
+    -fx-border-color: gold;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
 }
 
 .dict-input {
-    -fx-padding: 4;
+    -fx-padding: 4px;
     -fx-background-color: #141414;
+    -fx-font-size: 24px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
 }
 
 .result-pane {
     -fx-orientation: vertical;
     -fx-alignment: top-left;
-    -fx-vgap: 10;
+    -fx-vgap: 8px;
+    -fx-font-size: 20px;
+}
+
+.dict-link {
+    -fx-text-fill: #2156aa;
+    -fx-underline: true;
+}
+
+.result-pane > Label.word-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+}
+
+Label.word-definition {
+    -fx-font-size: 22px;
 }

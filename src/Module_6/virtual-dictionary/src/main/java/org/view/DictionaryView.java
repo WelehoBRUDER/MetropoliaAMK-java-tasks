@@ -26,6 +26,8 @@ public class DictionaryView extends Application {
     public static TextField input;
     public static Label text;
     public static Pane result;
+    public static int windowWidth = 800;
+    public static int windowHeight = 600;
 
     public static Button createButton(String text) {
         Button button = new Button(text);
@@ -42,6 +44,13 @@ public class DictionaryView extends Application {
     public static Label createLabel(String text) {
         Label label = new Label(text);
         label.getStyleClass().add("dict-label");
+        return label;
+    }
+
+    public static Label createLabel(String text, String styleClass) {
+        Label label = new Label(text);
+        label.getStyleClass().add("dict-label");
+        label.getStyleClass().add(styleClass);
         return label;
     }
 
@@ -67,6 +76,7 @@ public class DictionaryView extends Application {
 
     public static Hyperlink clickableTitle(String title) {
         Hyperlink link = new Hyperlink(title);
+        link.getStyleClass().add("dict-link");
         link.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 wordView(title);
@@ -80,8 +90,8 @@ public class DictionaryView extends Application {
         ArrayList<Word> found = controller.searchForWord(word);
         if (!found.isEmpty()) {
             Word current = found.get(0);
-            Label title = createLabel(current.getTitle());
-            Label definition = createLabel(current.getDefinition());
+            Label title = createLabel(current.getTitle(), "word-title");
+            Label definition = createLabel(current.getDefinition(), "word-definition");
             Pane examples = createVBox("examples");
             Label examplesTitle = createLabel("Examples:");
             append(examples, examplesTitle);
@@ -137,6 +147,12 @@ public class DictionaryView extends Application {
         FlowPane search = DictionaryView.createFlowPane("search-pane");
         result = DictionaryView.createVerticalFlowPane("result-pane");
 
+        // Position elemenets
+        search.setTranslateX(50);
+        search.setTranslateY(25);
+        result.setTranslateX(50);
+        result.setTranslateY(25);
+
         // Append elements to panes
         DictionaryView.append(search, input, button);
         DictionaryView.append(result, text);
@@ -149,6 +165,8 @@ public class DictionaryView extends Application {
         view.getStylesheets().add(getClass().getResource("/dictionary.css").toExternalForm());
         window.setTitle("Virtual Dictionary");
         window.setScene(view);
+        window.setWidth(windowWidth);
+        window.setHeight(windowHeight);
         window.show();
     }
 }
