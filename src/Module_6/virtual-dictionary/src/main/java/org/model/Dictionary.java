@@ -65,8 +65,7 @@ public class Dictionary {
         return words;
     }
 
-    // Placeholder, will be replaced by actual search logic
-    public String searchForWord(String word) {
+    public ArrayList<Word> searchForWord(String word) {
         ArrayList<Word> words = getWordObjects();
         ArrayList<Word> matching = new ArrayList<>();
         for (Word w : words) {
@@ -75,10 +74,6 @@ public class Dictionary {
             }
         }
         matching.sort((a, b) -> a.compareTo(b, word));
-        System.out.println("Matching words:");
-        for (Word w : matching) {
-            System.out.println(w.getTitle());
-        }
-        return "Word not found";
+        return matching;
     }
 }

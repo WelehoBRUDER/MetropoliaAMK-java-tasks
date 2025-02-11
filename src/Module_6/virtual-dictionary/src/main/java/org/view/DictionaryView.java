@@ -7,12 +7,16 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import org.controller.DictionaryController;
 import org.model.Dictionary;
+import org.model.Word;
+
+import java.util.ArrayList;
 
 
 public class DictionaryView extends Application {
@@ -43,8 +47,17 @@ public class DictionaryView extends Application {
         Button button = createButton("Search");
         button.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                String found = controller.searchForWord(input.getText());
-                text.setText(found);
+                DictionaryView.clear(result);
+                ArrayList<Word> found = controller.searchForWord(input.getText());
+                if (found.isEmpty()) {
+                    text.setText("Word not found");
+                } else {
+                    for (Word word : found) {
+                        String title = word.getTitle();
+                        Hyperlink link = new Hyperlink(title);
+                        DictionaryView.append(result, link);
+                    }
+                }
             }
         });
         return button;
@@ -69,6 +82,10 @@ public class DictionaryView extends Application {
         for (Node node : nodes) {
             pane.getChildren().add(node);
         }
+    }
+
+    public static void clear(FlowPane pane) {
+        pane.getChildren().clear();
     }
 
     public void start(Stage window) {

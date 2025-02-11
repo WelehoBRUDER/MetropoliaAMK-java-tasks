@@ -1,6 +1,7 @@
 package org.controller;
 
 import org.model.Dictionary;
+import org.model.Word;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class DictionaryController {
         return dictionary.getWords();
     }
 
-    public String searchForWord(String word) {
+    public ArrayList<Word> searchForWord(String word) {
         return dictionary.searchForWord(word);
     }
 }
