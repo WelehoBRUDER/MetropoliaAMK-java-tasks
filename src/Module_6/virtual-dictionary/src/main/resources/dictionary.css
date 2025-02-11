@@ -15,5 +15,10 @@
 .dict-input {
     -fx-padding: 4;
     -fx-background-color: #141414;
+}
 
+.result-pane {
+    -fx-orientation: vertical;
+    -fx-alignment: top-left;
+    -fx-vgap: 10;
 }

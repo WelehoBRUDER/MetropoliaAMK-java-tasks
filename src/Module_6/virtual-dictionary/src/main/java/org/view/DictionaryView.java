@@ -11,6 +11,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controller.DictionaryController;
 import org.model.Dictionary;
@@ -23,7 +25,7 @@ public class DictionaryView extends Application {
     public static final DictionaryController controller = new DictionaryController(new Dictionary());
     public static TextField input;
     public static Label text;
-    public static FlowPane result;
+    public static Pane result;
 
     public static Button createButton(String text) {
         Button button = new Button(text);
@@ -80,9 +82,7 @@ public class DictionaryView extends Application {
             Word current = found.get(0);
             Label title = createLabel(current.getTitle());
             Label definition = createLabel(current.getDefinition());
-            System.out.println(current.getTitle());
-            System.out.println(current.getDefinition());
-            FlowPane examples = createFlowPane("examples");
+            Pane examples = createVBox("examples");
             Label examplesTitle = createLabel("Examples:");
             append(examples, examplesTitle);
             for (String example : current.getExamples()) {
@@ -100,6 +100,13 @@ public class DictionaryView extends Application {
         return pane;
     }
 
+    public static VBox createVBox(String styleClass) {
+        VBox box = new VBox();
+        box.getStyleClass().add(styleClass);
+        box.getStyleClass().add("dict-vbox");
+        return box;
+    }
+
     public static FlowPane createVerticalFlowPane(String styleClass) {
         FlowPane pane = new FlowPane(Orientation.VERTICAL);
         pane.getStyleClass().add(styleClass);
@@ -108,13 +115,13 @@ public class DictionaryView extends Application {
     }
 
     // Appends all nodes to the pane (first element in parameters)
-    public static void append(FlowPane pane, Node... nodes) {
+    public static void append(Pane pane, Node... nodes) {
         for (Node node : nodes) {
             pane.getChildren().add(node);
         }
     }
 
-    public static void clear(FlowPane pane) {
+    public static void clear(Pane pane) {
         pane.getChildren().clear();
     }
 
@@ -128,7 +135,7 @@ public class DictionaryView extends Application {
         // Create search and result panes
         FlowPane mainView = DictionaryView.createVerticalFlowPane("main-view");
         FlowPane search = DictionaryView.createFlowPane("search-pane");
-        result = DictionaryView.createFlowPane("result-pane");
+        result = DictionaryView.createVerticalFlowPane("result-pane");
 
         // Append elements to panes
         DictionaryView.append(search, input, button);
