@@ -47,20 +47,50 @@ public class DictionaryView extends Application {
         Button button = createButton("Search");
         button.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                DictionaryView.clear(result);
+                clear(result);
                 ArrayList<Word> found = controller.searchForWord(input.getText());
                 if (found.isEmpty()) {
-                    text.setText("Word not found");
+                    append(result, new Label("No results found for '" + input.getText() + "'"));
                 } else {
                     for (Word word : found) {
                         String title = word.getTitle();
-                        Hyperlink link = new Hyperlink(title);
-                        DictionaryView.append(result, link);
+                        Hyperlink link = clickableTitle(title);
+                        append(result, link);
                     }
                 }
             }
         });
         return button;
+    }
+
+    public static Hyperlink clickableTitle(String title) {
+        Hyperlink link = new Hyperlink(title);
+        link.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                wordView(title);
+            }
+        });
+        return link;
+    }
+
+    public static void wordView(String word) {
+        clear(result);
+        ArrayList<Word> found = controller.searchForWord(word);
+        if (!found.isEmpty()) {
+            Word current = found.get(0);
+            Label title = createLabel(current.getTitle());
+            Label definition = createLabel(current.getDefinition());
+            System.out.println(current.getTitle());
+            System.out.println(current.getDefinition());
+            FlowPane examples = createFlowPane("examples");
+            Label examplesTitle = createLabel("Examples:");
+            append(examples, examplesTitle);
+            for (String example : current.getExamples()) {
+                append(examples, createLabel(example));
+            }
+
+            append(result, title, definition, examples);
+        }
     }
 
     public static FlowPane createFlowPane(String styleClass) {
