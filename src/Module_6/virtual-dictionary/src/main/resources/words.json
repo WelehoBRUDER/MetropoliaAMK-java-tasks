@@ -1,0 +1,170 @@
+[
+  {
+    "title": "Hello",
+    "definition": "Used as a greeting or to begin a conversation",
+    "examples": [
+      "Hello, how are you?",
+      "Hello, what is your name?"
+    ]
+  },
+  {
+    "title": "World",
+    "definition": "The earth, together with all of its countries and peoples",
+    "examples": [
+      "The world is a big place.",
+      "We live in a diverse world."
+    ]
+  },
+  {
+    "title": "Goodbye",
+    "definition": "Used to express good wishes when parting or at the end of a conversation",
+    "examples": [
+      "Goodbye, see you later.",
+      "Goodbye, take care."
+    ]
+  },
+  {
+    "title": "Love",
+    "definition": "An intense feeling of deep affection",
+    "examples": [
+      "I love you.",
+      "Love is a powerful emotion."
+    ]
+  },
+  {
+    "title": "Hate",
+    "definition": "Feel intense or passionate dislike for someone",
+    "examples": [
+      "I hate you.",
+      "Hate is a strong emotion."
+    ]
+  },
+  {
+    "title": "Peace",
+    "definition": "Freedom from disturbance; tranquility",
+    "examples": [
+      "Let's strive for peace.",
+      "Peace is the absence of war."
+    ]
+  },
+  {
+    "title": "War",
+    "definition": "A state of armed conflict between different countries or different groups within a country",
+    "examples": [
+      "The country is at war.",
+      "War brings destruction and suffering."
+    ]
+  },
+  {
+    "title": "Friend",
+    "definition": "A person whom one knows and with whom one has a bond of mutual affection",
+    "examples": [
+      "She is my best friend.",
+      "Friends support each other."
+    ]
+  },
+  {
+    "title": "Enemy",
+    "definition": "A person who is actively opposed or hostile to someone or something",
+    "examples": [
+      "He is my enemy.",
+      "Enemies can be dangerous."
+    ]
+  },
+  {
+    "title": "Life",
+    "definition": "The condition that distinguishes animals and plants from inorganic matter, including the capacity for growth, reproduction, functional activity, and continual change preceding death",
+    "examples": [
+      "Life is precious.",
+      "The circle of life."
+    ]
+  },
+  {
+    "title": "Death",
+    "definition": "The action or fact of dying or being killed; the end of the life of a person or organism",
+    "examples": [
+      "Death is inevitable.",
+      "The fear of death."
+    ]
+  },
+  {
+    "title": "Hope",
+    "definition": "A feeling of expectation and desire for a particular thing to happen",
+    "examples": [
+      "I hope for a better future.",
+      "Hope keeps us going."
+    ]
+  },
+  {
+    "title": "Despair",
+    "definition": "The complete loss or absence of hope",
+    "examples": [
+      "She fell into despair.",
+      "Despair can be overwhelming."
+    ]
+  },
+  {
+    "title": "Faith",
+    "definition": "Complete trust or confidence in someone or something",
+    "examples": [
+      "Faith in humanity.",
+      "Faith in a higher power."
+    ]
+  },
+  {
+    "title": "Doubt",
+    "definition": "A feeling of uncertainty or lack of conviction",
+    "examples": [
+      "I have doubts about this plan.",
+      "Doubt can be paralyzing."
+    ]
+  },
+  {
+    "title": "Joy",
+    "definition": "A feeling of great pleasure and happiness",
+    "examples": [
+      "The joy of laughter.",
+      "Joyful moments."
+    ]
+  },
+  {
+    "title": "Sadness",
+    "definition": "The condition or quality of being sad",
+    "examples": [
+      "She felt a deep sadness.",
+      "The sadness of loss."
+    ]
+  },
+  {
+    "title": "Anger",
+    "definition": "A strong feeling of annoyance, displeasure, or hostility",
+    "examples": [
+      "His anger flared up.",
+      "Anger management."
+    ]
+  },
+  {
+    "title": "Fear",
+    "definition": "An unpleasant emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat",
+    "examples": [
+      "Fear of the unknown.",
+      "Overcoming fear."
+    ]
+  },
+  {
+    "title": "Courage",
+    "definition": "The ability to do something that frightens one",
+    "examples": [
+      "Courage in the face of danger.",
+      "Acts of courage."
+    ]
+  },
+  {
+    "title": "Ladder",
+    "definition": "A structure consisting of a series of bars or steps between two upright lengths of wood, metal, or rope, used for climbing up or down something",
+    "examples": [
+      "Climbing the ladder of success.",
+      "The ladder to the roof."
+    ]
+  }
+]

@@ -72,9 +72,7 @@ public class DictionaryView extends Application {
     }
 
     public void start(Stage window) {
-        // Add some words to the dictionary
-        controller.addWord("hello", "used as a greeting or to begin a conversation");
-        controller.addWord("world", "the earth, together with all of its countries and peoples");
+
         // Create text and input
         Button button = DictionaryView.createSearchButton();
         text = DictionaryView.createLabel("");
