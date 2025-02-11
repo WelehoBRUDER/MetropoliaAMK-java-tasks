@@ -19,6 +19,7 @@ public class DictionaryView extends Application {
     public static final DictionaryController controller = new DictionaryController(new Dictionary());
     public static TextField input;
     public static Label text;
+    public static FlowPane result;
 
     public static Button createButton(String text) {
         Button button = new Button(text);
@@ -63,9 +64,9 @@ public class DictionaryView extends Application {
         return pane;
     }
 
+    // Appends all nodes to the pane (first element in parameters)
     public static void append(FlowPane pane, Node... nodes) {
         for (Node node : nodes) {
-            System.out.println(node.toString());
             pane.getChildren().add(node);
         }
     }
@@ -82,12 +83,11 @@ public class DictionaryView extends Application {
         // Create search and result panes
         FlowPane mainView = DictionaryView.createVerticalFlowPane("main-view");
         FlowPane search = DictionaryView.createFlowPane("search-pane");
-        FlowPane result = DictionaryView.createFlowPane("result-pane");
+        result = DictionaryView.createFlowPane("result-pane");
 
         // Append elements to panes
-        search.getChildren().add(input);
-        search.getChildren().add(button);
-        result.getChildren().add(text);
+        DictionaryView.append(search, input, button);
+        DictionaryView.append(result, text);
 
         // Append panes together
         DictionaryView.append(mainView, search, result);

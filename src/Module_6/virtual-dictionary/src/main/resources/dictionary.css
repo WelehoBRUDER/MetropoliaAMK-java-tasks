@@ -1,5 +1,19 @@
-.custom-button {
+.main-view {
+    -fx-background-color: black;
+}
+
+.main-view * {
+    -fx-text-fill: white;
     -fx-font: 16px "Serif";
-    -fx-padding: 10;
-    -fx-background-color: #CCFF99;
+}
+
+.dict-button {
+    -fx-padding: 4;
+    -fx-background-color: #141414;
+}
+
+.dict-input {
+    -fx-padding: 4;
+    -fx-background-color: #141414;
+
 }

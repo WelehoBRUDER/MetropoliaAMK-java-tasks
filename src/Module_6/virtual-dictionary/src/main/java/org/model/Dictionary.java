@@ -1,5 +1,6 @@
 package org.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Dictionary {
@@ -19,10 +20,13 @@ public class Dictionary {
 
     // Placeholder, will be replaced by actual search logic
     public String searchForWord(String word) {
-        if (words.containsKey(word)) {
-            return getMeaning(word);
-        } else {
-            return "Word not found";
+        String[] words = getWords();
+        ArrayList<String> matching = new ArrayList<>();
+        for (String w : words) {
+            if (w.toLowerCase().contains(word.toLowerCase())) {
+                matching.add(w);
+            }
         }
+        return "Word not found";
     }
 }
