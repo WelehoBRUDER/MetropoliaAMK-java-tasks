@@ -83,6 +83,7 @@ public class CurrencyView extends Application {
     public static ComboBox<String> createSelectElement() {
         ComboBox<String> selectElement = new ComboBox<>();
         selectElement.getItems().addAll(controller.getKeys());
+        selectElement.getStyleClass().add("select");
         return selectElement;
     }
 

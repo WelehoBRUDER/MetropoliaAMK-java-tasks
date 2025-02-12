@@ -1,5 +1,10 @@
-* {
+.main-view * {
     -fx-font-family: "sans-serif";
+    -fx-text-fill: white;
+}
+
+.main-view {
+    -fx-background-color: #151515;
 }
 
 .currency-label {
@@ -16,4 +21,15 @@
     -fx-padding: 4px;
     -fx-border-color: darkred;
     -fx-border-width: 2px;
+    -fx-background-color: black;
+}
+
+.input, .select {
+    -fx-background-color: #333333;
+}
+
+.select .list-cell {
+    -fx-background: #333333;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
 }
