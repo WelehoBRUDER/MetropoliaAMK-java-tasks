@@ -1,0 +1,19 @@
+* {
+    -fx-font-family: "sans-serif";
+}
+
+.currency-label {
+    -fx-font-size: 18px;
+}
+
+.arrow-right {
+    -fx-font-size: 32px;
+    -fx-padding: 8px;
+}
+
+.button {
+    -fx-font-size: 20px;
+    -fx-padding: 4px;
+    -fx-border-color: darkred;
+    -fx-border-width: 2px;
+}
