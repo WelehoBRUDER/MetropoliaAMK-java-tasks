@@ -25,6 +25,14 @@ public class CurrencyController {
         return this.currencies.keySet().toArray(new String[0]);
     }
 
+    public Currency getCurrency(String abrv) {
+        return this.currencies.get(abrv);
+    }
+
+    public String getName(String abrv) {
+        return this.currencies.get(abrv).getName();
+    }
+
     public void setFromCurrency(double fromCurrency) {
         this.fromCurrency = fromCurrency;
     }
