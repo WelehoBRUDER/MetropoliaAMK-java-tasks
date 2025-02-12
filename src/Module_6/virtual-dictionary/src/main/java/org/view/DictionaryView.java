@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -26,8 +27,8 @@ public class DictionaryView extends Application {
     public static TextField input;
     public static Label text;
     public static Pane result;
-    public static int windowWidth = 800;
-    public static int windowHeight = 600;
+    public final static int windowWidth = 600;
+    public final static int windowHeight = 550;
 
     public static Button createButton(String text) {
         Button button = new Button(text);
@@ -48,27 +49,31 @@ public class DictionaryView extends Application {
     }
 
     public static Label createLabel(String text, String styleClass) {
-        Label label = new Label(text);
-        label.getStyleClass().add("dict-label");
+        Label label = createLabel(text);
         label.getStyleClass().add(styleClass);
         return label;
+    }
+
+    // Generic search call for events
+    public static void doSearchQuery(String query) {
+        clear(result);
+        ArrayList<Word> found = controller.searchForWord(query);
+        if (found.isEmpty()) {
+            append(result, new Label("No results found for '" + query + "'"));
+        } else {
+            for (Word word : found) {
+                String title = word.getTitle();
+                Hyperlink link = clickableTitle(title);
+                append(result, link);
+            }
+        }
     }
 
     public static Button createSearchButton() {
         Button button = createButton("Search");
         button.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                clear(result);
-                ArrayList<Word> found = controller.searchForWord(input.getText());
-                if (found.isEmpty()) {
-                    append(result, new Label("No results found for '" + input.getText() + "'"));
-                } else {
-                    for (Word word : found) {
-                        String title = word.getTitle();
-                        Hyperlink link = clickableTitle(title);
-                        append(result, link);
-                    }
-                }
+                doSearchQuery(input.getText());
             }
         });
         return button;
@@ -85,20 +90,26 @@ public class DictionaryView extends Application {
         return link;
     }
 
+    // Creates the layout for displaying information about a single word
     public static void wordView(String word) {
         clear(result);
         ArrayList<Word> found = controller.searchForWord(word);
+        // Check if the word exists to prevent funny business
         if (!found.isEmpty()) {
+            // If it exists, it will always be at index 0.
             Word current = found.get(0);
+            // Create labels and wrappers for the elements to be displayed
             Label title = createLabel(current.getTitle(), "word-title");
             Label definition = createLabel(current.getDefinition(), "word-definition");
             Pane examples = createVBox("examples");
             Label examplesTitle = createLabel("Examples:");
             append(examples, examplesTitle);
+            // Loop through examples list and create labels for each of them.
             for (String example : current.getExamples()) {
                 append(examples, createLabel(example));
             }
 
+            // Append all elements to the result pane.
             append(result, title, definition, examples);
         }
     }
@@ -141,13 +152,23 @@ public class DictionaryView extends Application {
         Button button = DictionaryView.createSearchButton();
         text = DictionaryView.createLabel("");
         input = DictionaryView.createInput();
+        // Add event handler to allow using enter for search
+        input.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                // Check if the keyCode is equal to "ENTER"
+                if (keyEvent.getCode().toString().equals("ENTER")) {
+                    doSearchQuery(input.getText());
+                }
+            }
+        });
 
         // Create search and result panes
         FlowPane mainView = DictionaryView.createVerticalFlowPane("main-view");
         FlowPane search = DictionaryView.createFlowPane("search-pane");
         result = DictionaryView.createVerticalFlowPane("result-pane");
 
-        // Position elemenets
+        // Position elements
         search.setTranslateX(50);
         search.setTranslateY(25);
         result.setTranslateX(50);
@@ -165,8 +186,11 @@ public class DictionaryView extends Application {
         view.getStylesheets().add(getClass().getResource("/dictionary.css").toExternalForm());
         window.setTitle("Virtual Dictionary");
         window.setScene(view);
+        // Set window size
         window.setWidth(windowWidth);
         window.setHeight(windowHeight);
+        // Show screen and landing page.
         window.show();
+        doSearchQuery(""); // Show all possible words upon launching the dictionary
     }
 }

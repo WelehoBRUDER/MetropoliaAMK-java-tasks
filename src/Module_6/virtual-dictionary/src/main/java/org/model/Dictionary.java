@@ -65,14 +65,18 @@ public class Dictionary {
         return words;
     }
 
+    // Searches for all words that include the query somewhere, not case-sensitive.
+    // All matching words are then sorted in order of most matching to least matching.
     public ArrayList<Word> searchForWord(String word) {
         ArrayList<Word> words = getWordObjects();
         ArrayList<Word> matching = new ArrayList<>();
+        // Filter to only matching words
         for (Word w : words) {
             if (w.getId().contains(word.toLowerCase())) {
                 matching.add(w);
             }
         }
+        // Sort by indexOf(query)
         matching.sort((a, b) -> a.compareTo(b, word));
         return matching;
     }
