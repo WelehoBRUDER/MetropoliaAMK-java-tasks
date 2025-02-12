@@ -11,14 +11,20 @@ public class CurrencyController {
     private String to = "USD";
 
     public CurrencyController() {
-        currencies.put("EUR", new Currency("EUR", "Euro", 1.04));
-        currencies.put("USD", new Currency("USD", "US Dollar", 1));
-        currencies.put("PLN", new Currency("PLN", "Polish Zloty", 0.25));
-        currencies.put("JPY", new Currency("JPY", "Japanese Yen", 0.0065));
-        currencies.put("RUB", new Currency("RUB", "Russian Ruble", 0.011));
-        currencies.put("CNY", new Currency("CNY", "Chinese Yuan", 0.14));
-        currencies.put("INR", new Currency("INR", "Indian Rupee", 0.012));
-        currencies.put("GBP", new Currency("GBP", "British Pound", 1.25));
+        currencies.put("EUR", new Currency("EUR", "Euro", 1.04, "€"));
+        currencies.put("USD", new Currency("USD", "US Dollar", 1, "$"));
+        currencies.put("PLN", new Currency("PLN", "Polish Zloty", 0.25, "zł"));
+        currencies.put("JPY", new Currency("JPY", "Japanese Yen", 0.0065, "¥"));
+        currencies.put("RUB", new Currency("RUB", "Russian Ruble", 0.011, "₽"));
+        currencies.put("CNY", new Currency("CNY", "Chinese Yuan", 0.14, "¥"));
+        currencies.put("INR", new Currency("INR", "Indian Rupee", 0.012, "₹"));
+        currencies.put("GBP", new Currency("GBP", "British Pound", 1.25, "£"));
+        currencies.put("AUD", new Currency("AUD", "Australian Dollar", 0.72, "$"));
+        currencies.put("CAD", new Currency("CAD", "Canadian Dollar", 0.74, "$"));
+        currencies.put("BRL", new Currency("BRL", "Brazilian Real", 0.19, "R$"));
+        currencies.put("MXN", new Currency("MXN", "Mexican Peso", 0.051, "$"));
+        currencies.put("KRW", new Currency("KRW", "South Korean Won", 0.00085, "₩"));
+        currencies.put("SEK", new Currency("SEK", "Swedish Krona", 0.11, "kr"));
     }
 
     public String[] getKeys() {
@@ -69,15 +75,8 @@ public class CurrencyController {
         Currency result = currencies.get(to);
         double rate = result.getConversionRate() / conversion.getConversionRate();
         System.out.println(rate);
+        System.out.println("fromCurrency: " + fromCurrency);
         setToCurrency(fromCurrency / rate);
         System.out.println(toCurrency);
-    }
-
-    public static void main(String[] args) {
-        CurrencyController controller = new CurrencyController();
-        controller.setFromCurrency(1000);
-        controller.setFrom("EUR");
-        controller.setTo("JPY");
-        controller.convert();
     }
 }
