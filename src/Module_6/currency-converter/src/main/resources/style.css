@@ -19,17 +19,29 @@
 .button {
     -fx-font-size: 20px;
     -fx-padding: 4px;
-    -fx-border-color: darkred;
+    -fx-border-color: silver;
     -fx-border-width: 2px;
-    -fx-background-color: black;
+}
+.button:hover {
+    -fx-background-color: #555555;
 }
 
-.input, .select {
+.input, .select, .button {
     -fx-background-color: #333333;
 }
 
 .select .list-cell {
-    -fx-background: #333333;
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-background-color: #333333;
+    -fx-background: transparent;
+    -fx-border-color: #555555;
+    -fx-border-width: 1px;
+   -fx-text-fill: white;
+}
+
+.select .list-cell:filled:selected {
+    -fx-background-color: #555555;
+}
+
+.select .list-cell:filled:hover {
+    -fx-background-color: #555555;
 }

@@ -234,6 +234,7 @@ public class CurrencyView extends Application {
         // Set window size
         window.setWidth(windowWidth);
         window.setHeight(windowHeight);
+        window.setResizable(false);
 
         // Show screen and landing page.
         window.show();
