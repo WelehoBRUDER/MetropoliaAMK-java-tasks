@@ -1,9 +1,6 @@
 package org.controller;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import org.view.NoteView;
 import javafx.fxml.FXML;
@@ -21,6 +18,8 @@ public class NoteController {
 
     @FXML
     private TextField noteName;
+    @FXML
+    private Button deleteNoteButton;
 
     private Notebook notebook;
     private int currentNoteIndex = -1;
@@ -31,10 +30,20 @@ public class NoteController {
 
     @FXML
     public void addNote() {
-        String title = noteName.getText();
-        String content = noteDesc.getText();
-        notebook.addNote(new Note(title, content));
-        displayAllNotes();
+        if (currentNoteIndex != -1) {
+            Note currentNote = getNote(currentNoteIndex);
+            currentNote.setTitle(noteName.getText());
+            currentNote.setContent(noteDesc.getText());
+            displayAllNotes();
+            currentNoteIndex = -1;
+            deleteNoteButton.setDisable(true);
+        } else {
+
+            String title = noteName.getText();
+            String content = noteDesc.getText();
+            notebook.addNote(new Note(title, content));
+            displayAllNotes();
+        }
     }
 
     public HBox createNoteDisplay(Note note) {
@@ -43,9 +52,21 @@ public class NoteController {
         Label title = new Label(note.getTitle());
         Label content = new Label(note.getContent());
         title.setPrefWidth(120);
-        content.setPrefWidth(335);
+        content.setPrefWidth(300);
         title.styleProperty().set("-fx-font-weight: bold;");
+        listItem.getStyleClass().add("list-item");
         listItem.getChildren().addAll(title, content);
+        listItem.setFocusTraversable(false);
+
+        listItem.setOnMousePressed(e -> {
+            e.consume();
+            currentNoteIndex = notesArea.getItems().indexOf(listItem);
+            Note currentNote = getNote(currentNoteIndex);
+            noteName.setText(currentNote.getTitle());
+            noteDesc.setText(currentNote.getContent());
+            deleteNoteButton.setDisable(false);
+
+        });
         return listItem;
     }
 
@@ -78,6 +99,8 @@ public class NoteController {
         if (currentNoteIndex != -1) {
             removeNote(currentNoteIndex);
             displayAllNotes();
+            currentNoteIndex = -1;
+            deleteNoteButton.setDisable(true);
         }
     }
 
