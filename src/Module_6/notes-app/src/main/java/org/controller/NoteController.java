@@ -38,7 +38,6 @@ public class NoteController {
             currentNoteIndex = -1;
             deleteNoteButton.setDisable(true);
         } else {
-
             String title = noteName.getText();
             String content = noteDesc.getText();
             notebook.addNote(new Note(title, content));
@@ -46,7 +45,7 @@ public class NoteController {
         }
     }
 
-    public HBox createNoteDisplay(Note note) {
+    public HBox createNoteDisplay(Note note, int index) {
         HBox listItem = new HBox();
         listItem.styleProperty().set("-fx-padding: 3px;");
         Label title = new Label(note.getTitle());
@@ -57,24 +56,36 @@ public class NoteController {
         listItem.getStyleClass().add("list-item");
         listItem.getChildren().addAll(title, content);
         listItem.setFocusTraversable(false);
+        listItem.setId("note" + index);
 
         listItem.setOnMousePressed(e -> {
             e.consume();
-            currentNoteIndex = notesArea.getItems().indexOf(listItem);
+            switchSelectionVisual(index);
+            currentNoteIndex = index;
             Note currentNote = getNote(currentNoteIndex);
             noteName.setText(currentNote.getTitle());
             noteDesc.setText(currentNote.getContent());
             deleteNoteButton.setDisable(false);
-
         });
         return listItem;
     }
 
     @FXML
+    public void switchSelectionVisual(int index) {
+        if (currentNoteIndex != -1) {
+            HBox prevNote = (HBox) notesArea.lookup("#note" + currentNoteIndex);
+            prevNote.getStyleClass().remove("selected");
+        }
+        HBox currentNote = (HBox) notesArea.lookup("#note" + index);
+        currentNote.getStyleClass().add("selected");
+    }
+
+    @FXML
     public void displayAllNotes() {
         notesArea.getItems().clear();
-        for (Note note : notebook.getNotes()) {
-            notesArea.getItems().add(createNoteDisplay(note));
+        for (int i = 0; i < notebook.getSize(); i++) {
+            HBox noteDisplay = createNoteDisplay(notebook.getNote(i), i);
+            notesArea.getItems().add(noteDisplay);
         }
     }
 
