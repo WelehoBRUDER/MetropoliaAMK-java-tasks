@@ -6,30 +6,27 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="600.0" styleClass="main-view" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.CurrencyController">
    <children>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
             <Label text="Currency Converter">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
+            <Label id="error" fx:id="errorMessage" textFill="#ff0202" />
          </children>
-         <VBox.margin>
-            <Insets bottom="30.0" />
-         </VBox.margin>
-      </HBox>
+      </VBox>
       <FlowPane alignment="CENTER" prefHeight="76.0" prefWidth="600.0">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="176.0">
                <children>
-                  <Label fx:id="currencyNameA" styleClass="currency-label" text="Label" />
+                  <Label fx:id="currencyNameA" styleClass="currency-label" text="Currency" />
                   <ComboBox id="currencySelectA" fx:id="currencySelectA" onAction="#setFrom" prefWidth="160.0" styleClass="select" />
                </children>
             </VBox>
@@ -39,7 +36,7 @@
                </FlowPane.margin></Label>
             <VBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="186.0">
                <children>
-                  <Label fx:id="currencyNameB" styleClass="currency-label" text="Label" />
+                  <Label fx:id="currencyNameB" styleClass="currency-label" text="Currency" />
                   <ComboBox id="currencySelectB" fx:id="currencySelectB" onAction="#setTo" prefWidth="150.0" styleClass="select" />
                </children>
             </VBox>
@@ -50,7 +47,7 @@
             <StackPane alignment="CENTER_RIGHT" maxHeight="-Infinity" prefHeight="0.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="currencyInputA" onInputMethodTextChanged="#tryToUpdateCurrency" onKeyPressed="#tryToUpdateCurrency" onKeyReleased="#tryToUpdateCurrency" onKeyTyped="#tryToUpdateCurrency" prefHeight="0.0" prefWidth="200.0" styleClass="input" text="0" />
-                  <Label fx:id="currencySymbolA" alignment="CENTER_RIGHT" text="Label">
+                  <Label fx:id="currencySymbolA" alignment="CENTER_RIGHT" text="?">
                      <StackPane.margin>
                         <Insets right="10.0" />
                      </StackPane.margin>
@@ -67,7 +64,7 @@
                         <Insets />
                      </StackPane.margin>
                   </TextField>
-                  <Label fx:id="currencySymbolB" text="Label">
+                  <Label fx:id="currencySymbolB" text="?">
                      <StackPane.margin>
                         <Insets right="10.0" />
                      </StackPane.margin>
@@ -81,7 +78,7 @@
       </FlowPane>
       <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#convert" text="Convert" />
+            <Button fx:id="convertButton" mnemonicParsing="false" onAction="#convert" text="Convert" />
          </children>
       </FlowPane>
    </children>

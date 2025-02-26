@@ -1,4 +1,4 @@
-package org.model;
+package org.entity;
 
 public class Currency {
     private final String abbreviation;
@@ -14,7 +14,6 @@ public class Currency {
     }
 
 
-
     public String getAbbreviation() {
         return abbreviation;
     }
@@ -26,7 +25,7 @@ public class Currency {
     public double getConversionRate() {
         return conversionRate;
     }
-    
+
     public String getSymbol() {
         return this.symbol;
     }

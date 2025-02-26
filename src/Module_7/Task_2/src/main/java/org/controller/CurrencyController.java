@@ -1,10 +1,12 @@
 package org.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.model.Currency;
+import org.dao.CurrencyDao;
+import org.entity.Currency;
 import java.util.HashMap;
 
 public class CurrencyController {
@@ -30,23 +32,26 @@ public class CurrencyController {
     private TextField currencyInputA;
     @FXML
     private TextField currencyInputB;
+    @FXML
+    private Button convertButton;
+    @FXML
+    private Label errorMessage;
 
     public void initialize() {
-        currencies.put("EUR", new Currency("EUR", "Euro", 1.04, "€"));
-        currencies.put("USD", new Currency("USD", "US Dollar", 1, "$"));
-        currencies.put("PLN", new Currency("PLN", "Polish Zloty", 0.25, "zł"));
-        currencies.put("JPY", new Currency("JPY", "Japanese Yen", 0.0065, "¥"));
-        currencies.put("RUB", new Currency("RUB", "Russian Ruble", 0.011, "₽"));
-        currencies.put("CNY", new Currency("CNY", "Chinese Yuan", 0.14, "¥"));
-        currencies.put("INR", new Currency("INR", "Indian Rupee", 0.012, "₹"));
-        currencies.put("GBP", new Currency("GBP", "British Pound", 1.25, "£"));
-        currencies.put("AUD", new Currency("AUD", "Australian Dollar", 0.72, "$"));
-        currencies.put("CAD", new Currency("CAD", "Canadian Dollar", 0.74, "$"));
-        currencies.put("BRL", new Currency("BRL", "Brazilian Real", 0.19, "R$"));
-        currencies.put("MXN", new Currency("MXN", "Mexican Peso", 0.051, "$"));
-        currencies.put("KRW", new Currency("KRW", "South Korean Won", 0.00085, "₩"));
-        currencies.put("SEK", new Currency("SEK", "Swedish Krona", 0.11, "kr"));
+        CurrencyDao dao = new CurrencyDao();
+        for (Currency currency : dao.getAllCurrencies()) {
+            currencies.put(currency.getAbbreviation(), currency);
+        }
+        if (currencies.isEmpty()) {
+            convertButton.setDisable(true);
+            currencySelectA.setDisable(true);
+            currencySelectB.setDisable(true);
+            currencyInputA.setDisable(true);
+            currencyInputB.setDisable(true);
+            errorMessage.setText("FAILED DATABASE CONNECTION");
+        } else {
         createCurrencySelections();
+        }
     }
 
     @FXML

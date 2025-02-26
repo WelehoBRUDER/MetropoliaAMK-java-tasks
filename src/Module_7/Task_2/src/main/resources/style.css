@@ -45,3 +45,8 @@
 .select .list-cell:filled:hover {
     -fx-background-color: #555555;
 }
+
+#error {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+}
