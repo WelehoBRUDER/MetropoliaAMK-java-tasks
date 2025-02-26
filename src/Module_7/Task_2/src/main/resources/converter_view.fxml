@@ -27,17 +27,20 @@
       </HBox>
       <FlowPane alignment="CENTER" prefHeight="76.0" prefWidth="600.0">
          <children>
-            <VBox prefHeight="0.0" prefWidth="100.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="176.0">
                <children>
                   <Label fx:id="currencyNameA" styleClass="currency-label" text="Label" />
-                  <ComboBox fx:id="currencySelectA" prefWidth="150.0" styleClass="select" />
+                  <ComboBox id="currencySelectA" fx:id="currencySelectA" onAction="#setFrom" prefWidth="160.0" styleClass="select" />
                </children>
             </VBox>
-            <Label styleClass="arrow-right" text="→" />
-            <VBox prefHeight="40.0" prefWidth="100.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="arrow-right" text="→">
+               <FlowPane.margin>
+                  <Insets left="15.0" />
+               </FlowPane.margin></Label>
+            <VBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="186.0">
                <children>
                   <Label fx:id="currencyNameB" styleClass="currency-label" text="Label" />
-                  <ComboBox fx:id="currencySelectB" prefWidth="150.0" styleClass="select" />
+                  <ComboBox id="currencySelectB" fx:id="currencySelectB" onAction="#setTo" prefWidth="150.0" styleClass="select" />
                </children>
             </VBox>
          </children>

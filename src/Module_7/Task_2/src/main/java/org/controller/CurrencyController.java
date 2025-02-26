@@ -23,15 +23,15 @@ public class CurrencyController {
     @FXML
     private Label currencySymbolB;
     @FXML
-    private ComboBox currencySelectA;
+    private ComboBox<String> currencySelectA;
     @FXML
-    private ComboBox currencySelectB;
+    private ComboBox<String> currencySelectB;
     @FXML
     private TextField currencyInputA;
     @FXML
     private TextField currencyInputB;
 
-    public CurrencyController() {
+    public void initialize() {
         currencies.put("EUR", new Currency("EUR", "Euro", 1.04, "€"));
         currencies.put("USD", new Currency("USD", "US Dollar", 1, "$"));
         currencies.put("PLN", new Currency("PLN", "Polish Zloty", 0.25, "zł"));
@@ -49,8 +49,21 @@ public class CurrencyController {
         createCurrencySelections();
     }
 
+    @FXML
     public void createCurrencySelections() {
+        currencySelectA.getItems().addAll(getKeys());
+        currencySelectB.getItems().addAll(getKeys());
+        currencySelectA.setValue(from);
+        currencySelectB.setValue(to);
+        updateDisplayedNames();
+    }
 
+    @FXML
+    public void updateDisplayedNames() {
+        currencyNameA.setText(getName(from));
+        currencyNameB.setText(getName(to));
+        currencySymbolA.setText(currencies.get(from).getSymbol());
+        currencySymbolB.setText(currencies.get(to).getSymbol());
     }
 
     public String[] getKeys() {
@@ -73,27 +86,13 @@ public class CurrencyController {
         this.toCurrency = toCurrency;
     }
 
-    public double getToCurrency() {
-        return this.toCurrency;
+    public void setFrom() {
+        this.from = currencySelectA.getValue();
+        updateDisplayedNames();
     }
-
-    public double getFromCurrency() {
-        return this.fromCurrency;
-    }
-
-    public void setFrom(String abrv) {
-        this.from = abrv;
-    }
-    public void setTo(String abrv) {
-        this.to = abrv;
-    }
-
-    public String getFrom() {
-        return this.from;
-    }
-
-    public String getTo() {
-        return to;
+    public void setTo() {
+        this.to = currencySelectB.getValue();
+        updateDisplayedNames();
     }
 
     public void convert() {
@@ -101,7 +100,12 @@ public class CurrencyController {
         Currency result = currencies.get(to);
         double rate = result.getConversionRate() / conversion.getConversionRate();
         setToCurrency(fromCurrency / rate);
-        System.out.println(toCurrency);
+        updateCurrencyResult();
+    }
+
+    @FXML
+    public void updateCurrencyResult() {
+        currencyInputB.setText(String.format("%.2f", toCurrency));
     }
 
     public void tryToUpdateCurrency() {
