@@ -1,12 +1,19 @@
 package org.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.dao.CurrencyDao;
 import org.entity.Currency;
+import org.view.AddCurrencyView;
+import org.view.CurrencyView;
+
 import java.util.HashMap;
 
 public class CurrencyController {
@@ -39,7 +46,7 @@ public class CurrencyController {
 
     public void initialize() {
         CurrencyDao dao = new CurrencyDao();
-        for (Currency currency : dao.getAllCurrencies()) {
+        for (Currency currency : dao.findAll()) {
             currencies.put(currency.getAbbreviation(), currency);
         }
         if (currencies.isEmpty()) {
@@ -114,9 +121,13 @@ public class CurrencyController {
     }
 
     @FXML
-    public void addNewCurrency() {
-        // Creates new window where you can add a new currency
+    public void addNewCurrency() throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/add_currency_view.fxml"));
+        Parent root = fxmlLoader.load();
 
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     public void tryToUpdateCurrency() {
