@@ -44,6 +44,11 @@ public class CurrencyController {
     @FXML
     private Label errorMessage;
 
+    public void update() {
+        currencies.clear();
+        initialize();
+    }
+
     public void initialize() {
         CurrencyDao dao = new CurrencyDao();
         for (Currency currency : dao.findAll()) {
@@ -127,6 +132,7 @@ public class CurrencyController {
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setOnHidden(event -> update());
         stage.show();
     }
 

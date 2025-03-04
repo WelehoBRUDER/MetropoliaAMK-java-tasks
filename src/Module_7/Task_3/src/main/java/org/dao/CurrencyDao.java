@@ -12,7 +12,7 @@ public class CurrencyDao {
         Currency exists = find(curr.getAbbreviation());
         if (exists != null) {
             update(curr);
-            return "Currency updated";
+            return "sCurrency '" + curr.getAbbreviation()  +"' updated";
         }
         try {
             EntityManager em = MariaDBJPAConnection.getInstance();
@@ -22,9 +22,9 @@ public class CurrencyDao {
         }
         catch (Exception e) {
             e.printStackTrace();
-            return e.getMessage();
+            return "f" + e.getMessage();
         }
-        return "success";
+        return "sCurrency '" + curr.getAbbreviation()  +"' added";
     }
 
     public Currency find(String abbreviation) {

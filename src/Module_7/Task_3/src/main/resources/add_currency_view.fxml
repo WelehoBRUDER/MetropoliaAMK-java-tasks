@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="282.0" prefWidth="341.0" styleClass="main-view" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.AddCurrencyController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="341.0" styleClass="main-view" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.AddCurrencyController">
    <children>
       <Label alignment="TOP_CENTER" prefHeight="15.0" prefWidth="346.0" text="Add new currency">
          <font>
@@ -70,7 +70,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="342.0" spacing="150.0">
          <children>
             <Button mnemonicParsing="false" onAction="#submit" text="Submit" />
             <Button mnemonicParsing="false" onAction="#close" text="Cancel" />
@@ -79,5 +79,6 @@
             <Insets left="20.0" />
          </padding>
       </HBox>
+      <Label fx:id="resultLabel" alignment="CENTER" prefHeight="46.0" prefWidth="344.0" text="Error / Success" />
    </children>
 </VBox>
