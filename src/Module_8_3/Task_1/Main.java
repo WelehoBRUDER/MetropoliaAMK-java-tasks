@@ -21,7 +21,7 @@ public class Main {
         }
 
         // Filter to only london
-        people = people.stream().filter(p -> p.getCity().equals("London")).collect(Collectors.toCollection(ArrayList::new));
+        people.removeIf(person -> !person.getCity().equals("London"));
 
         System.out.println("\nOnly people from London:");
         // Print the filtered list
