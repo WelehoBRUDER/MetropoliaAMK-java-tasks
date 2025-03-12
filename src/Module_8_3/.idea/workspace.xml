@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="579206df-63f7-496d-a25f-32e01bf87b46" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Task_1/Person.java" afterDir="false" />
-    </list>
+    <list default="true" id="579206df-63f7-496d-a25f-32e01bf87b46" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,21 +10,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "WelehoBRUDER"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;WelehoBRUDER&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/WelehoBRUDER/MetropoliaAMK-java-tasks.git",
-    "accountId": "bb31ea4c-253e-453d-9488-823c77011b77"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/WelehoBRUDER/MetropoliaAMK-java-tasks.git&quot;,
+    &quot;accountId&quot;: &quot;bb31ea4c-253e-453d-9488-823c77011b77&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2uAHcLr5Up2zcS0j2lG1otyJ3fM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,7 +36,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Juhana/Documents/GitHub/MetropoliaAMK-java-tasks/src/Module_8_3/Task_1",
+    "last_opened_file_path": "C:/Users/Juhana/Documents/GitHub/MetropoliaAMK-java-tasks/src/Module_8_3/Task_2",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -60,6 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741684536991</updated>
       <workItem from="1741684538058" duration="18000" />
+      <workItem from="1741767447009" duration="94000" />
     </task>
     <servers />
   </component>
